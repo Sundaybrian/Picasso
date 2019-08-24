@@ -127,8 +127,37 @@ class ImageTestClass(TestCase):
         Image.objects.all().delete()
         Category.objects.all().delete()
 
-    def test_get_photos_today(self):
+    def test_get_photos(self):
         photos=Image.get_photos()
         self.assertTrue(len(photos)>0)
+
+    def test_delete_photo(self):
+
+        self.new_img.save()
+        self.new_img.tags.add(self.new_tag)  
+
+        test_user=Photographer(first_name='olly',last_name="olly",email='test@outlook.com')   
+        test_user.save_photographer()
+
+        test_rugby=Category(category_name='Rugby')
+        test_rugby.save_category()
+
+        test_nkr=Location(loc_name='Nakuru')
+        test_nkr.save_loc()
+
+        #creating a new tag and saving it
+        test_rugby_tag=tags(tag_name='#simba')
+        test_rugby_tag.save()
+
+        test_img=Image(img_name='Simba Sevens',img_desc='Simba hammers 89-21',img_loc=test_nkr,img_category=test_rugby,author=test_user)
+        test_img.save()
+
+        test_img.tags.add(test_rugby_tag)  
+        
+        images=Image.objects.all()
+        test_img.delete_photo()
+        self.assertEqual(len(images),1)
+
+
 
 
