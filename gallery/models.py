@@ -1,5 +1,6 @@
 from django.db import models
 import datetime as dt
+from django.core.exceptions import ObjectDoesNotExist
 
 
 # Create your models here.
@@ -49,6 +50,19 @@ class Location(models.Model):
 class Category(models.Model):
     category_name=models.CharField(max_length=50)
 
+    @classmethod
+    def fetch_category_id(cls,search_term):
+
+        try:
+            category=cls.objects.filter(category_name=search_term).first()
+            return category.id
+            
+        except ObjectDoesNotExist:
+            return None
+            
+        
+
+
 
     def __str__(self):
         return self.category_name
@@ -75,10 +89,11 @@ class Image(models.Model):
     last_updated=models.DateTimeField(auto_now=True)
     author=models.ForeignKey(Photographer,on_delete=models.CASCADE)
     tags=models.ManyToManyField(tags)
+    image=models.ImageField(upload_to='images/')
 
        
     def __str__(self):
-        return f'Image{self.img_name}-{self.img_loc}-{self.img_category}'
+        return f'Image{self.img_name}-{self.img_loc}-{self.img_category}-{self.pub_date}'
 
     @classmethod
     def get_photos(cls):
@@ -90,8 +105,8 @@ class Image(models.Model):
         return photos
 
     @classmethod
-    def search_by_category(cls,search_term):
-        photos=cls.objects.filter(img_category==search_term)
+    def search_by_category(cls,search_term_id):
+        photos=cls.objects.filter(img_category_id=search_term_id)
         return photos    
 
 
