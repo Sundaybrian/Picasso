@@ -9,7 +9,7 @@ class Location(models.Model):
         return self.loc_name
 
 
-class Category:
+class Category(models.Model):
     category_name=models.CharField(max_length=50)
 
     def __str__(self):
@@ -18,11 +18,12 @@ class Category:
 class Image(models.Model):
     img_name=models.CharField(max_length=100)
     img_desc=models.TextField()   
-    img_loc=models.ForeignKey(Location)
-    img_category=models.ForeignKey(Category)
+    img_loc=models.ForeignKey(Location,on_delete=models.CASCADE)
+    img_category=models.ForeignKey(Category,on_delete=models.CASCADE)
     pub_date=models.DateTimeField(auto_now_add=True)
     last_updated=models.DateTimeField(auto_now=True)
     author=models.ForeignKey(User,on_delete=models.CASCADE)
+
        
-       def __str__(self):
-           return f'Image{self.img_name}-{self.img_loc}-{self.img_category}'
+    def __str__(self):
+        return f'Image{self.img_name}-{self.img_loc}-{self.img_category}'
