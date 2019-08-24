@@ -1,7 +1,7 @@
 from django.test import TestCase
 from .models import Category,Image,Location,tags
+from django.contrib.auth.models import User
 
-# Create your tests here.
 class CategoryTestClass(TestCase):
 
     #set up method
@@ -79,4 +79,26 @@ class LocationTestClass(TestCase):
         test_mbs.delete_loc()
         locations=Location.objects.all()
         self.assertEqual(len(locations),1)
+
+
+# Image tests
+
+class ImageTestClass(TestCase):
+
+    def setUp(self):
+        #creating me as picasso
+        self.sb=User(username='omwamithegreat',email='sundaypriest@outlook.com')   
+        self.sb.save_author()
+
+        self.foota=Category(category_name='Football')
+        self.foota.save_category()
+
+        #creating a new tag and saving it
+        self.new_tag=tags(tag_name='#coyg')
+        self.new_tag.save()
+
+        self.new_img=Image(img_name='Lfc Gunned Down',img_desc='Gunners shed Liverpool nightmare to slaughter their counterparts in a 7 goal thriller',img_loc='Liverpool',img_category=self.foota,author=self.sb)
+        self.new_img.save()
+
+        self.new_img.tags.add(self.new_tag)     
 
