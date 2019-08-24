@@ -89,7 +89,7 @@ class Image(models.Model):
     last_updated=models.DateTimeField(auto_now=True)
     author=models.ForeignKey(Photographer,on_delete=models.CASCADE)
     tags=models.ManyToManyField(tags)
-    image=models.ImageField(upload_to='images/')
+    image=models.ImageField(upload_to='images/',default='')
 
        
     def __str__(self):
