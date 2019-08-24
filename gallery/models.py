@@ -8,6 +8,20 @@ class Location(models.Model):
     def __str__(self):
         return self.loc_name
 
+    
+    def save_loc(self):
+
+        '''
+        method to save a category to db
+        '''
+        self.save() 
+
+    def delete_loc(self):
+        '''
+        method to delete a category from db
+        '''   
+        self.delete() 
+
 
 class Category(models.Model):
     category_name=models.CharField(max_length=50)
