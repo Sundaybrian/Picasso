@@ -21,6 +21,9 @@ class tags(models.Model):
     '''
     tag_name=models.CharField(max_length=30)
 
+    def __str__(self):
+        return self.tag_name
+
 
 class Location(models.Model):
     loc_name=models.CharField(max_length=100)
