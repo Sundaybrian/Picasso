@@ -2,4 +2,21 @@
 {% block content %}
 
 <h1>Welcome to picassooo home</h1>
+
+  <!-- Looping through photos   -->
+  {% for pic in photos %}
+
+  <div class="row">
+    <!-- displaying photos -->
+    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+      <h2 class="text-center"> {{ pic.img_name }} </h2>
+    </div>
+
+  </div>
+
+  {% empty %}
+  <div class="row">
+    <h2 class="text-center">There No photos</h2>
+  </div>
+  {% endfor %}
 {% endblock content %}
