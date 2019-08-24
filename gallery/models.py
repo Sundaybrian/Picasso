@@ -12,15 +12,22 @@ class Location(models.Model):
 class Category(models.Model):
     category_name=models.CharField(max_length=50)
 
-    def save_category(self):
-        '''
-        method to save a category to db
-        '''
-        self.save()
-
 
     def __str__(self):
         return self.category_name
+
+    def save_category(self):
+
+        '''
+        method to save a category to db
+        '''
+        self.save() 
+
+    def delete_category(self):
+        '''
+        method to delete a category from db
+        '''
+        self.delete()   
 
 class Image(models.Model):
     img_name=models.CharField(max_length=100)
