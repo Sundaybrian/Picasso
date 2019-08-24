@@ -1,3 +1,4 @@
+{% load bootstrap4 %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,6 +10,11 @@
     {% else %}
     <title>Picasso</title>
     {% endif %}
+
+    {% block styles %}
+        {% bootstrap_css%}
+    {% endblock styles %}
+        
 </head>
 <body>
     {% block content %}
@@ -16,6 +22,12 @@
     
     {% endblock content %}
 
+
+    {% block scripts %}
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        {% bootstrap_javascript %}
+    {% endblock scripts %}
+        
     
 </body>
 </html>
