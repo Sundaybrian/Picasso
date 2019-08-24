@@ -9,3 +9,5 @@ def welcome(request):
 
     
 
+def picassoHome(request):
+    return render(request,'all-canvas/picasso_home.html')
