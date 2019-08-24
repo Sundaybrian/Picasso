@@ -9,7 +9,7 @@ class tags(models.Model):
     '''
     tag_name=models.CharField(max_length=30)
 
-    
+
 class Location(models.Model):
     loc_name=models.CharField(max_length=100)
 
@@ -59,6 +59,7 @@ class Image(models.Model):
     pub_date=models.DateTimeField(auto_now_add=True)
     last_updated=models.DateTimeField(auto_now=True)
     author=models.ForeignKey(User,on_delete=models.CASCADE)
+    tags=models.ManyToManyField(tags)
 
        
     def __str__(self):
