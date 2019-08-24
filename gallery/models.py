@@ -1,4 +1,5 @@
 from django.db import models
+import datetime as dt
 
 
 # Create your models here.
@@ -75,3 +76,14 @@ class Image(models.Model):
        
     def __str__(self):
         return f'Image{self.img_name}-{self.img_loc}-{self.img_category}'
+
+    @classmethod
+    def get_photos(cls):
+        '''
+        method that fetches photos with date published
+        '''
+        photos=cls.objects.order_by('pub_date')
+
+        return photos
+
+
