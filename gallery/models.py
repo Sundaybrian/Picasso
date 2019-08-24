@@ -46,8 +46,8 @@ class Category(models.Model):
 class Image(models.Model):
     img_name=models.CharField(max_length=100)
     img_desc=models.TextField()   
-    img_loc=models.ForeignKey(Location,on_delete=models.CASCADE)
-    img_category=models.ForeignKey(Category,on_delete=models.CASCADE)
+    img_loc=models.ForeignKey(Location,on_delete=models.DO_NOTHING)
+    img_category=models.ForeignKey(Category,on_delete=models.DO_NOTHING)
     pub_date=models.DateTimeField(auto_now_add=True)
     last_updated=models.DateTimeField(auto_now=True)
     author=models.ForeignKey(User,on_delete=models.CASCADE)
