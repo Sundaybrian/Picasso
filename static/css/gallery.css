@@ -87,3 +87,7 @@ section.masonry-grid {
   opacity: 0.85;
   height: 100%;
 }
+
+a.grid-item-anchor:hover{
+    cursor:finger;
+}

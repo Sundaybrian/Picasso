@@ -3,32 +3,62 @@
 
 <h1 class="title">Welcome to picassooo home</h1>
 
-  <!-- Looping through photos   -->
-  
-  
-    <!-- displaying photos -->
-    <section class="masonry-grid" id="work">
-      <div class="grid">
-        <div class="grid-sizer"></div>
-        {% if photos%}
-        {% for pic in photos %}
-        <div class="grid-item">
-          <img src="{{pic.image.url}}" class="" alt="{{pic.img_name}}">
-          <div class="content-slide-up">
-            <p>{{ pic.img_name }}</p>
-            <hr class="underline">
-          </div>
-          <div class="overlay-slide-down"></div>
+
+
+<!-- displaying photos -->
+<section class="masonry-grid" id="work">
+  <div class="grid">
+    <div class="grid-sizer"></div>
+    {% if photos%}
+    {% for pic in photos %}
+    <!-- Looping through photos   -->
+        <a data-toggle="modal" href="#{{pic.pk}}" class="picasso-modal-trigger">
+          <div class="grid-item">
+              <img src="{{pic.image.url}}" id="{{pic.id}}{{pic.img_name}}" alt="{{pic.img_name}}">
+              <div class="content-slide-up">
+                <p>{{ pic.img_name }}</p>
+                <hr class="underline">
+              </div>
+              <div class="overlay-slide-down"></div>
+            </div>
+        </a>
+
+
+           <!-- ================================ ===========================-->
+  <!-- Modal -->
+<div class="modal fade" id="{{pic.pk}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">{{pic.img_name}}</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
         </div>
-        {% endfor %}
-        
+        <div class="modal-body">
+            <img src="{{pic.image.url}}" class="img-fluid" alt="{{pic.img_name}}">    
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- ================================================================ -->
+  
+        {% endfor %}   
       </div>
     </section>
+    
+    
+    
+    
+    {% else %}
+    <div class="row">
+      <h2 class="text-center">There No photos</h2>
+    </div>
+    {% endif %}
 
+ 
 
-  {% else %}
-  <div class="row">
-    <h2 class="text-center">There No photos</h2>
-  </div>
-  {% endif %}
 {% endblock content %}
