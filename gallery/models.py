@@ -50,15 +50,6 @@ class Location(models.Model):
 class Category(models.Model):
     category_name=models.CharField(max_length=50)
 
-    @classmethod
-    def fetch_category_id(cls,search_term):
-
-        try:
-            category=cls.objects.filter(category_name=search_term).first()
-            return category.id
-            
-        except ObjectDoesNotExist:
-            return None
 
     def __str__(self):
         return self.category_name
@@ -106,6 +97,13 @@ class Image(models.Model):
         photos=cls.objects.filter(img_category__category_name__icontains=search_term)
         return photos  
 
+    @classmethod
+    def filter_by_location(cls,location):
+
+        photos=cls.objects.filter(img_loc__loc_name__icontains=location)
+        return photos
+
+    
     @classmethod
     def delete_photo():
         pass  
