@@ -23,9 +23,7 @@ def search_results(request):
     if 'photo' in request.GET and request.GET['photo']:
 
         search_term=request.GET.get('photo')
-        search_term_id=Category.fetch_category_id(search_term)
-
-        searched_photos=Image.search_by_category(search_term_id)
+        searched_photos=Image.search_by_category(search_term)
 
         context={
         'message':f"{search_term}",
@@ -37,7 +35,7 @@ def search_results(request):
     else :
 
         context={
-        'message':"You haven't searched for any term"
+        'message':f"{search_term}"
         }
         return render(request,'all-canvas/search.html',context)    
 
