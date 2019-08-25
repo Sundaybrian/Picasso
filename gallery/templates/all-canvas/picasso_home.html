@@ -27,7 +27,7 @@
            <!-- ================================ ===========================-->
   <!-- Modal -->
 <div class="modal fade" id="{{pic.pk}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
+    <div class="modal-dialog modal-lg" role="document">
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title" id="exampleModalLabel">{{pic.id}}.{{pic.img_name}}</h5>
@@ -48,15 +48,8 @@
                     <li class="list-group-item">Artist:{{pic.author.first_name}} {{pic.author.last_name}}</li>
                   </ul>
                 </div>
-                <div class="card-footer">
-                    <div class="tags">
-                        <ul>
-                          
-                        </ul>
-                    </div>
-                </div>
-              </div>   
-        </div>
+            </div>
+          </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
         </div>
