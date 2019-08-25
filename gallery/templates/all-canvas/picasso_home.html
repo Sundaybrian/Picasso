@@ -1,9 +1,7 @@
 {% extends 'all-canvas/base.html'%}
 {% block content %}
 
-<h1 class="title">Welcome to picassooo home</h1>
-
-
+<h2 class="subtitle">Picaso Home</h2>
 
 <!-- displaying photos -->
 <section class="masonry-grid" id="work">
@@ -36,15 +34,15 @@
           </button>
         </div>
         <div class="modal-body">
-            <div class="card" >
+            <div class="card info-card">
                 <img class="card-img-top" src="{{pic.image.url}}" alt="Card image">
                 <div class="card-body">
-                  <h4 class="card-title">{{pic.img_name}}</h4>
+                  <h4 class="card-title text-center">{{pic.img_name}}</h4>
                   <p class="card-text">{{pic.img_desc}}</p>
                   <ul class="list-group list-unstyled">
                     <li class="list-group-item">Location:{{pic.img_loc}}</li>
                     <li class="list-group-item">Category:{{pic.img_category}}</li>
-                    <li class="list-group-item">Posted:{{pic.pub_date}}</li>
+                    <li class="list-group-item">Posted:{{pic.pub_date | date}}</li>
                     <li class="list-group-item">Artist:{{pic.author.first_name}} {{pic.author.last_name}}</li>
                   </ul>
                 </div>
