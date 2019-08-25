@@ -1,12 +1,29 @@
+
+{% load static %}    
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-<body>
-    <a href="{% url 'picassoHome' %}">Get Started</a>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Welcome To Picasso</title>
+    <link rel="icon" href="{% static 'img/pablo.png' %}" />
+    {% block styles %}
+     
+      <link rel="stylesheet" href="{% static 'css/welcome.css'%}">
+    {% endblock styles %}
+  </head>
+  <body>
+    <section class="cover-main" id="home">
+    <div class="wrapper">
+      <div class="caption">
+        <h1>Welcome To Picasso</h1>
+           <a href="{% url 'picassoHome' %}" class="btn btn-outline-light btn-lg">Snap Right In..</a>
+          </div>
+      </div>
+    </section>
+  
+  </body>
 </html>
+
+
