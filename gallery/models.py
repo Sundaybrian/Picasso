@@ -101,8 +101,13 @@ class Image(models.Model):
         return photos
 
     @classmethod
-    def search_by_category(cls,search_term_id):
-        photos=cls.objects.filter(img_category_id=search_term_id)
-        return photos    
+    def search_by_category(cls,search_term):
+        #Using lookup that spans relations to fetch for all photos with a searched keyword regardless of case
+        photos=cls.objects.filter(img_category__category_name__icontains=search_term)
+        return photos  
+
+    @classmethod
+    def delete_photo():
+        pass  
 
 
