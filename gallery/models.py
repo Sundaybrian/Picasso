@@ -99,9 +99,14 @@ class Image(models.Model):
 
     @classmethod
     def filter_by_location(cls,location):
-        
+
         photos=cls.objects.filter(img_loc__loc_name__icontains=location)
         return photos
+
+    @classmethod
+    def get_img_by_id(cls,img_id):
+        pic=cls.objects.get(pk=img_id)
+        return pic
 
     
     @classmethod
