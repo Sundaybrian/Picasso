@@ -8,23 +8,26 @@
     {% else %}
       <h2> Found 0 photos for the search term {{message}}</h2>
     {% endif %}
-
   </div>
 
-  <div class="row">
+  <section class="masonry-grid" id="work">
+      <div class="grid">
+        <div class="grid-sizer"></div>
+  
+        {% for pic in photos %}
+        <div class="grid-item">
+          <img src="{{pic.image.url}}" class="" alt="{{pic.img_name}}">
+          <div class="content-slide-up">
+            <p>{{ pic.img_name }}</p>
+            <hr class="underline">
+          </div>
+          <div class="overlay-slide-down"></div>
+        </div>
+        {% endfor %}
+        
+      </div>
+    </section>
 
-  {% if photos %}
-    {% for pic in photos%}
-      <div class="col-sm-6 col-md-3">
-          <h1>{{pic.img_name}}</h1>
-          
-      </div>
-       <!--Display  images  -->
-     <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-        <img src="{{pic.image.url}}" class="img-fluid" alt="Image">
-      </div>
-    {% endfor %}
-  {% endif %}
-  </div>
+
 </div>
 {% endblock %}
