@@ -94,12 +94,12 @@ class Image(models.Model):
     @classmethod
     def search_by_category(cls,search_term):
         #Using lookup that spans relations to fetch for all photos with a searched keyword regardless of case
-        photos=cls.objects.filter(img_category__category_name__icontains=search_term)
+        photos=cls.objects.filter(img_category__category_name__iexact=search_term)
         return photos  
 
     @classmethod
     def filter_by_location(cls,location):
-
+        
         photos=cls.objects.filter(img_loc__loc_name__icontains=location)
         return photos
 
