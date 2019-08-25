@@ -4,18 +4,22 @@
 <h1>Welcome to picassooo home</h1>
 
   <!-- Looping through photos   -->
-  {% for pic in photos %}
-
+  
   <div class="row">
     <!-- displaying photos -->
-    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-      <h2 class="text-center"> {{ pic.img_name }} </h2>
-    </div>
-
-    <!--Display  images  -->
-    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-        <img src="{{pic.image.url}}" class="img-fluid" alt="Image">
+    <section class="masonry-grid" id="work">
+      <div class="grid">
+        {% for pic in photos %}
+        <div class="grid-item">
+          <img src="{{pic.image.url}}" class="img-fluid" alt="">
+          <div class="content-slide-up">
+            <p>{{ pic.img_name }}</p>
+            <hr class="underline">
+          </div>
+          <div class="overlay-slide-down"></div>
+        </div>
       </div>
+    </section>
 
   </div>
 
