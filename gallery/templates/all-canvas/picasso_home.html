@@ -9,10 +9,11 @@
     <!-- displaying photos -->
     <section class="masonry-grid" id="work">
       <div class="grid">
+        <div class="grid-sizer"></div>
         {% if photos%}
         {% for pic in photos %}
         <div class="grid-item">
-          <img src="{{pic.image.url}}" class="img-fluid" alt="{{pic.img_name}}">
+          <img src="{{pic.image.url}}" class="" alt="{{pic.img_name}}">
           <div class="content-slide-up">
             <p>{{ pic.img_name }}</p>
             <hr class="underline">
