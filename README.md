@@ -40,7 +40,7 @@ As an admin
 * `$ python3.6 -m venv virtual` to create a  virtual environment
 * `$ source virtual/bin/activate` to activate the virtual environment
 * `$ psql` to activate the postgres server
-* `$ username=create database picasso` create db with the name blogfest
+* `$ username=create database picasso` create db with the name picasso
 * run `$ python3.6 -m pip install -r requirements.txt ` to install dependencies
 * `$ python3.6 manage.py makemigration` to initialize database migrations
 * `$ python3.6 manage.py migrate ` to commit the migration you are running
