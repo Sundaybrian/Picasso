@@ -1,6 +1,7 @@
 from django.db import models
 import datetime as dt
 from django.core.exceptions import ObjectDoesNotExist
+from django.db.models import Q
 
 
 # Create your models here.
@@ -94,7 +95,9 @@ class Image(models.Model):
     @classmethod
     def search_by_category(cls,search_term):
         #Using lookup that spans relations to fetch for all photos with a searched keyword regardless of case
-        photos=cls.objects.filter(img_category__category_name__iexact=search_term)
+        photos=cls.objects.filter( Q(img_category__category_name__iexact=search_term) | 
+        Q(img_loc__loc_name__icontains=search_term) | Q(img_name__icontains=search_term))
+
         return photos  
 
     @classmethod
