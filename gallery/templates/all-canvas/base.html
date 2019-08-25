@@ -24,7 +24,7 @@
     <div class="container">
         {% block content %}
         <!-- filter by location -->
-        <form class="form-inline my-2 my-lg-0" role="search" action="{% url 'filter_by_location' %}">
+        <form class="form-inline my-2 my-lg-0" role="search" method="POST">
             <input class="form-control mr-sm-2" type="search" placeholder="Filter by location..." aria-label="Search" name="location">
             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Filter</button>
           </form>
