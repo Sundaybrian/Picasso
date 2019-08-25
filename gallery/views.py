@@ -37,6 +37,13 @@ def search_results(request):
         context={
         'message':f"{search_term}"
         }
-        return render(request,'all-canvas/search.html',context)    
+        return render(request,'all-canvas/search.html',context) 
 
+def image(request,img_id):
+    try:
+        pic=Image.get_img_by_id(img_id)
+    except DoesNotExist:
+        raise Http404()
+
+    return render(request,'all-canvas/image.html',{'pic':pic})
         
