@@ -40,6 +40,10 @@ a.navbar-brand{
   background: transparent;
 }
 
+.navbar-light .navbar-toggler {
+  color: var(--green1) !important;
+}
+
 
 /* ========================================================== */
 body,
