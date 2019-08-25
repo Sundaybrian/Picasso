@@ -5,27 +5,29 @@
 
   <!-- Looping through photos   -->
   
-  <div class="row">
+  
     <!-- displaying photos -->
     <section class="masonry-grid" id="work">
       <div class="grid">
+        {% if photos%}
         {% for pic in photos %}
         <div class="grid-item">
-          <img src="{{pic.image.url}}" class="img-fluid" alt="">
+          <img src="{{pic.image.url}}" class="img-fluid" alt="{{pic.img_name}}">
           <div class="content-slide-up">
             <p>{{ pic.img_name }}</p>
             <hr class="underline">
           </div>
           <div class="overlay-slide-down"></div>
         </div>
+        {% endfor %}
+        
       </div>
     </section>
 
-  </div>
 
-  {% empty %}
+  {% else %}
   <div class="row">
     <h2 class="text-center">There No photos</h2>
   </div>
-  {% endfor %}
+  {% endif %}
 {% endblock content %}
